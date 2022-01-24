@@ -8,6 +8,9 @@ const axiosConfig = {
 
 export const axiosInstance = axios.create(axiosConfig);
 
+const CancelToken = axios.CancelToken;
+let cancel;
+
 export default function initRequest() {
   let requestCount = 0;
 
@@ -21,6 +24,14 @@ export default function initRequest() {
   axiosInstance.interceptors.request.use(
     (config) => {
       console.log("interceptor request success: ", config);
+
+      if (cancel) {
+        cancel(); // cancel request
+      }
+      config.cancelToken = new CancelToken(function executor(c) {
+        cancel = c;
+      });
+
       if (config?.showLoading) {
         requestCount += 1;
         // dispatch action show loading

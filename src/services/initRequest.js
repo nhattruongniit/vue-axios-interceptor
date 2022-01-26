@@ -38,7 +38,7 @@ export default function initRequest() {
       }
 
       // add auth token
-      const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlZTJhNzM2YWEzYzIwMDE2YzNiZWU1IiwiZmlyc3ROYW1lIjoidG9ueSIsImxhc3ROYW1lIjoibmd1eWVuIiwiYXZhdGFyIjoiYXZhdGFyIiwiZW1haWwiOiJuaGF0dHJ1b25nMTgxMUBnbWFpbC5jb20iLCJyb2xlIjoib3BlcmF0b3IifSwiaWF0IjoxNjQyOTk4Mzk2LCJleHAiOjE2NDMwMzQzOTZ9.4IUAnrZTrBVAnd4PXB3xK7EY-XAjIzI_8V1sMrdsqk8`;
+      const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlZTJhNzM2YWEzYzIwMDE2YzNiZWU1IiwiZmlyc3ROYW1lIjoidG9ueSIsImxhc3ROYW1lIjoibmd1eWVuIiwiYXZhdGFyIjoiYXZhdGFyIiwiZW1haWwiOiJuaGF0dHJ1b25nMTgxMUBnbWFpbC5jb20iLCJyb2xlIjoib3BlcmF0b3IifSwiaWF0IjoxNjQzMTY2NTM5LCJleHAiOjE2NDMyMDI1Mzl9.3dWDW89l7kMEnIOSYNf5bJhdSNCAw4xGQxVK2N9nONw`;
       if (token) {
         // config.headers.Authorization = `Bearer ${token}`;
         // config.headers.common['Authorization'] = `Bearer ${token}`;
@@ -80,8 +80,8 @@ export default function initRequest() {
 
       // handle request timeout
       if (error?.code === "ECONNABORTED") {
-        if (error.config?.apiTimeout?.type === "song") {
-          console.log("behavious timeout for api song");
+        if (error.config?.apiTimeout?.type === "license") {
+          console.log("behavious timeout for api license");
         } else {
           console.log("common timeout");
         }
@@ -96,6 +96,7 @@ export default function initRequest() {
         case 403:
           break;
         case 500:
+          break;
         case 404:
           break;
         default:

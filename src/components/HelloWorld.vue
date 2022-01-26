@@ -3,6 +3,7 @@
     <h1>{{ msg }}</h1>
 
     <button type="button" @click="handleFetchUser">fetch user</button>
+    <button type="button" @click="handleFetchUser">fetch user 1</button>
   </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
       try {
         const res = await httpRequest.get("/user", {
           apiTimeout: {
-            type: "song",
+            type: "license",
           },
         });
         console.log("fetch user: ", res);
